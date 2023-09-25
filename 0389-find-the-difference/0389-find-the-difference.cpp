@@ -2,16 +2,21 @@ class Solution {
 public:
     char findTheDifference(string s, string t) {
         if(s.empty()) return t[0];
+        int res=0;
+        for(int i=0;i<s.length();i++)
+        {
+            res^=s[i];
+            //   cout<<"======"<<res<<"======"<<endl;
+        }
 
-        unordered_map<char,int>mp1;
-        for(auto x:t)
-        mp1[x]++;
-        for(auto x:s)
-        mp1[x]--;
-    for(auto x:mp1)
-    {
-        if(x.second) return x.first;
-    }
-       return ' ';
+        // cout<<"==================================================="<<endl;
+        for(int i=0;i<t.length();i++)
+        {
+            res^=t[i];
+            // cout<<"======"<<res<<"======"<<endl;
+        }
+
+        return (char)res;
+
     }
 };
