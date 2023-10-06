@@ -1,29 +1,23 @@
 class Solution {
 public:
     int integerBreak(int n) {
-        // handle base cases
-        if (n == 2) return 1;
-        if (n == 3) return 2;
+        
+         if(n==2) return 1;
+        if(n==3) return 2;
+        vector<int> dp(n+1,0);
 
-        // Dynamic programming table to store maximum products
-        vector<int> dp(n + 1, 0);
-
-        // Base cases for numbers 1, 2, and 3 -only for computing for rest of numbers-
-        dp[1] = 1;
-        dp[2] = 2;
-        dp[3] = 3;
-
-        // Fill the dynamic programming table for larger numbers
-        for (int num = 4; num <= n; ++num) {
-            int dpForNum = 0;
-            // Iterate through smaller numbers to calculate the maximum product
-            for (int subNum = 1; subNum <= num / 2; ++subNum) {
-                dpForNum = max(dpForNum, dp[subNum] * dp[num - subNum]);
+        dp[1]=1;
+        dp[2]=2;
+        dp[3]=3;
+        
+        for(int i=4;i<=n;i++){
+            int maxmult = -1e9;
+            for(int j=1;j<=i;j++){
+                maxmult=max(maxmult,(j*dp[i-j]));
             }
-            // Update the maximum product for the current number
-            dp[num] = dpForNum;
+            dp[i]=maxmult;
         }
 
-        return dp[n];
+    return dp[n];
     }
 };
