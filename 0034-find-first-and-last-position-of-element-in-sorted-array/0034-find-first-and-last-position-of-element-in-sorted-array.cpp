@@ -7,7 +7,7 @@ public:
 
         int left = lower_bound(nums.begin(),nums.end(),target)-nums.begin();
         int right = upper_bound(nums.begin(),nums.end(),target)-nums.begin();
-    cout<<left <<" "<<right;
+    // cout<<left <<" "<<right;
 return {left,right-1};
     }
 };
