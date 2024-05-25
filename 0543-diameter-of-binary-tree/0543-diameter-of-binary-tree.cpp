@@ -10,6 +10,8 @@
  * };
  */
 class Solution {
+
+    // updatig height and diameter of each node and takig themax one out
     int height(TreeNode* root,int& maxi){
         if(root==nullptr) return 0;
         int l=height(root->left,maxi);
