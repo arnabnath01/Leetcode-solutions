@@ -69,6 +69,7 @@ public:
 class Solution {
 public:
     int removeStones(vector<vector<int>>& stones) {
+        int n=stones.size();
           int maxRow = 0;
         int maxCol = 0;
         for (auto it : stones) {
